@@ -1,0 +1,7 @@
+name = "PVSimBase"
+uuid = "2810a8f8-ed9d-50a5-b7a6-1da2da8222f3"
+authors = ["Stefan de Lange <langestefan@msn.com>"]
+version = "0.1.0"
+
+[compat]
+julia = "1.10"

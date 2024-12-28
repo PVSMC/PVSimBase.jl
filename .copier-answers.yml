@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier
+AnswerStrategy: recommended
+Authors: Stefan de Lange <langestefan@msn.com>
+CodeOfConductContact: langestefan@msn.com
+ConfigIndentation: 2
+JuliaIndentation: 4
+JuliaMinVersion: '1.10'
+License: MIT
+LicenseCopyrightHolders: Stefan de Lange
+MarkdownIndentation: 2
+PackageName: PVSimBase
+PackageOwner: PVSMC
+PackageUUID: 2810a8f8-ed9d-50a5-b7a6-1da2da8222f3
+_commit: v0.14.1
+_src_path: https://github.com/JuliaBesties/BestieTemplate.jl
