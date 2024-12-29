@@ -27,25 +27,25 @@ function Location(; latitude, longitude, altitude = 0.0, timezone = TimeZone("UT
 end
 
 function Location(
-    latitude::F,
-    longitude::F,
-    altitude::F,
-    timezone::TimeZone,
-) where {F<:Real}
+        latitude::F,
+        longitude::F,
+        altitude::F,
+        timezone::TimeZone
+) where {F <: Real}
     return Location(
         Quantity(latitude, deg = 1),
         Quantity(longitude, deg = 1),
         Quantity(altitude, m = 1),
-        timezone,
+        timezone
     )
 end
 # Handle default for Quantities
 function Location(
-    latitude::Q,
-    longitude::Q,
-    altitude::F,
-    timezone::TimeZone,
-) where {F<:Real,Q<:Quantity}
+        latitude::Q,
+        longitude::Q,
+        altitude::F,
+        timezone::TimeZone
+) where {F <: Real, Q <: Quantity}
     return Location(latitude, longitude, Quantity(altitude, m = 1), timezone)
 end
 
