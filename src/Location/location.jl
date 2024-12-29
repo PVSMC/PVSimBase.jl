@@ -18,7 +18,7 @@ struct Location
     "Altitude in meters"
     altitude::Quantity
     "Timezone of the location"
-    timezone::FixedTimeZone
+    timezone::TimeZone
 end
 
 # constructor accepting Float64 inputs
@@ -26,7 +26,7 @@ function Location(
     latitude::Float64,
     longitude::Float64;
     altitude::Float64 = 0.0,
-    timezone::FixedTimeZone = TimeZone("UTC"),
+    timezone::TimeZone = TimeZone("UTC"),
 )
     return Location(
         Quantity(latitude, deg = 1),
@@ -41,7 +41,7 @@ function Location(
     latitude::Quantity,
     longitude::Quantity;
     altitude::Quantity = Quantity(0.0, m = 1),
-    timezone::FixedTimeZone = TimeZone("UTC"),
+    timezone::TimeZone = TimeZone("UTC"),
 )
     return Location(latitude, longitude, altitude, timezone)
 end
