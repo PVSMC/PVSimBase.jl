@@ -21,13 +21,17 @@ struct Location
     timezone::TimeZone
 end
 
-# constructor accepting Float64 inputs
+# constructor accepting keywords
+function Location(; latitude, longitude, altitude = 0.0, timezone = TimeZone("UTC"))
+    return Location(latitude, longitude, altitude, timezone)
+end
+
 function Location(
-    latitude::Float64,
-    longitude::Float64;
-    altitude::Float64 = 0.0,
-    timezone::TimeZone = TimeZone("UTC"),
-)
+    latitude::F,
+    longitude::F,
+    altitude::F,
+    timezone::TimeZone,
+) where {F<:Real}
     return Location(
         Quantity(latitude, deg = 1),
         Quantity(longitude, deg = 1),
@@ -35,15 +39,14 @@ function Location(
         timezone,
     )
 end
-
-# constructor accepting Quantity inputs
+# Handle default for Quantities
 function Location(
-    latitude::Quantity,
-    longitude::Quantity;
-    altitude::Quantity = Quantity(0.0, m = 1),
-    timezone::TimeZone = TimeZone("UTC"),
-)
-    return Location(latitude, longitude, altitude, timezone)
+    latitude::Q,
+    longitude::Q,
+    altitude::F,
+    timezone::TimeZone,
+) where {F<:Real,Q<:Quantity}
+    return Location(latitude, longitude, Quantity(altitude, m = 1), timezone)
 end
 
 end
