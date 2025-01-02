@@ -13,9 +13,9 @@ using DynamicQuantities
         ),
         (
             test_name = "Constructor - Quantity",
-            latitude = Quantity(37.7749, deg = 1),
-            longitude = Quantity(-122.4194, deg = 1),
-            altitude = Quantity(0.0, m = 1),
+            latitude = Quantity(37.7749, SymbolicDimensions, deg = 1),
+            longitude = Quantity(-122.4194, SymbolicDimensions, deg = 1),
+            altitude = Quantity(0.0, SymbolicDimensions, m = 1),
             timezone = TimeZone("UTC")
         ),
         (
@@ -34,9 +34,10 @@ using DynamicQuantities
                 altitude = test_case.altitude,
                 timezone = test_case.timezone
             )
-            @test loc.latitude == Quantity(test_case.latitude, deg = 1)
-            @test loc.longitude == Quantity(test_case.longitude, deg = 1)
-            @test loc.altitude == Quantity(test_case.altitude, m = 1)
+            @test loc.latitude == Quantity(test_case.latitude, SymbolicDimensions, deg = 1)
+            @test loc.longitude ==
+                  Quantity(test_case.longitude, SymbolicDimensions, deg = 1)
+            @test loc.altitude == Quantity(test_case.altitude, SymbolicDimensions, m = 1)
             @test loc.timezone == test_case.timezone
         end
     end

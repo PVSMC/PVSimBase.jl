@@ -33,9 +33,9 @@ function Location(
         timezone::TimeZone
 ) where {F <: Real}
     return Location(
-        Quantity(latitude, deg = 1),
-        Quantity(longitude, deg = 1),
-        Quantity(altitude, m = 1),
+        Quantity(latitude, SymbolicDimensions, deg = 1),
+        Quantity(longitude, SymbolicDimensions, deg = 1),
+        Quantity(altitude, SymbolicDimensions, m = 1),
         timezone
     )
 end
@@ -46,7 +46,8 @@ function Location(
         altitude::F,
         timezone::TimeZone
 ) where {F <: Real, Q <: Quantity}
-    return Location(latitude, longitude, Quantity(altitude, m = 1), timezone)
+    return Location(
+        latitude, longitude, Quantity(altitude, SymbolicDimensions, m = 1), timezone)
 end
 
 end
